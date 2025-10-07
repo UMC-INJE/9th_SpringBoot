@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="entity.UserMapper">
+
+    <!-- 전체 사용자 조회 -->
+    <select id="findAll" resultType="entity.User">
+        SELECT user_id, email, password, name, gender, birth_date, 
+               food_category_id, phone, address, created_at
+        FROM user_tb
+    </select>
+
+    <!-- ID로 사용자 조회 -->
+    <select id="findById" parameterType="int" resultType="entity.User">
+        SELECT user_id, email, password, name, gender, birth_date, 
+               food_category_id, phone, address, created_at
+        FROM user_tb
+        WHERE user_id = #{userId}
+    </select>
+
+    <!-- 사용자 추가 -->
+    <insert id="insertUser" parameterType="entity.User" useGeneratedKeys="true" keyProperty="userId">
+        INSERT INTO user_tb (email, password, name, gender, birth_date, 
+                             food_category_id, phone, address)
+        VALUES (#{email}, #{password}, #{name}, #{gender}, #{birthDate}, 
+                #{foodCategoryId}, #{phone}, #{address})
+    </insert>
+
+    <!-- 사용자 수정 -->
+    <update id="updateUser" parameterType="entity.User">
+        UPDATE user_tb
+        SET email = #{email},
+            password = #{password},
+            name = #{name},
+            gender = #{gender},
+            birth_date = #{birthDate},
+            food_category_id = #{foodCategoryId},
+            phone = #{phone},
+            address = #{address}
+        WHERE user_id = #{userId}
+    </update>
+
+    <!-- 사용자 삭제 -->
+    <delete id="deleteUser" parameterType="int">
+        DELETE FROM user_tb
+        WHERE user_id = #{userId}
+    </delete>
+
+</mapper>
