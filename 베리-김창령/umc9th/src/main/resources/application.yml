@@ -1,6 +1,6 @@
 spring:
   application:
-    name: "???? ?" # "umc9th"
+    name: "umc9th"
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver # MySQL JDBC ???? ??? ??
