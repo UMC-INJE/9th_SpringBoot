@@ -1,6 +1,7 @@
-package com.example.umc9th.domain.food.enums;
+package com.example.umc9th.domain.member.enums;
 
 public enum FoodName {
+    NONE,
     KOREAN,
     JAPANESE,
     CHINESE,
