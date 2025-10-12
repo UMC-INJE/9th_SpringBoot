@@ -1,24 +1,44 @@
 package entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
+@Entity
+@Table(name = "user_tb")
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class User {
-	private int user_id; // user_id INT PK NN
-	private String phone; //phone VARCHAR(45) NN
-	private String user_name; //user_name VARCHAR(50) NN
-	private String gender; //gender VARCHAR(45) NN
-	private String birth_date; //birth_date DATE NN
-	private String address; //address VARCHAR(255) NN
-	private int food_category_id; //food_category_id INT
-	private String created_at; //created_at TMESTAMP(3)
-	private String email; //email NN VARCHAR(50)
-	private int point; //point INT
-	private String password; //password NN VARCHAR(45)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    private Integer userId;
+
+    @Column(nullable = false, length = 50)
+    private String email;
+
+    @Column(nullable = false, length = 45)
+    private String password;
+
+    @Column(name = "name", nullable = false, length = 50)
+    private String name;
+
+    @Column(nullable = false, length = 45)
+    private String gender;
+
+    @Column(name = "birth_date", nullable = false)
+    private LocalDate birthDate;
+
+    @Column(length = 255)
+    private String address;
+
+    @Column(name = "food_category_id")
+    private Integer foodCategoryId;
+
+    @Column(length = 45)
+    private String phone;
+
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    private Integer point;
 }
