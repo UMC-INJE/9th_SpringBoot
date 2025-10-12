@@ -1,60 +1,77 @@
 package com.example.umc9th.domain.member.entity;
 
-import com.example.umc9th.domain.member.enums.SocialType;
-import com.example.umc9th.domain.member.enums.Gender;
+import com.example.umc9th.domain.mission.entity.MemberMission;
+import com.example.umc9th.domain.review.entity.Review;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import com.example.umc9th.domain.member.enums.*;
+import com.example.umc9th.domain.member.entity.mapping.*;
 
 @Entity
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-@Table(name="member")
+@Table(name = "member")
 public class Member {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "member_id")
+    private Long memberId;
 
-    @Column(name="name", nullable = false, length = 80)
+    @Column(name = "name", nullable = false, length = 50)
     private String name;
 
     @Enumerated(EnumType.STRING)
-    @Column(name="gender")
-    private Gender gender;
+    @Column(name = "gender", nullable = false)
+    private Gender gender = Gender.NONE;
 
-    @Column(name="birth", nullable = false)
+    @Column(name = "birth")
     private LocalDate birth;
 
-    @Column(name="region", nullable = false, length = 100)
-    private String region;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "address", nullable = false)
+    private Address address = Address.NONE;
 
-    @Column(name="detail_address", length = 255)
+    @Column(name = "detail_address", nullable = false, length = 100)
     private String detailAddress;
 
-    @Column(name="social_id", nullable = false, length = 100)
-    private String socialId;
+    @Column(name = "social_uid", length = 120)
+    private String socialuid;
 
     @Enumerated(EnumType.STRING)
-    @Column(name="social_type",nullable = false, length = 30)
+    @Column(name = "social_type", nullable = false)
     private SocialType socialType;
 
-    @Column(name="email", nullable = false, length = 100)
+    @Column(name="point",nullable = false)
+    private int point;
+
+    @Column(name = "email", nullable = false, length = 100)
     private String email;
 
-    @Column(name="phone_number", nullable = false, length = 11)
+    @Column(name = "phone_number", length = 50)
     private String phoneNumber;
 
-    @Column(name="deleted_at")
+    @Column(name = "deleted_at")
     private LocalDateTime deletedAt;
 
-    @Column(name="created_at", nullable = false, updatable = false)
-    private Timestamp createdAt;
+    @Column(name= "updated_at")
+    private LocalDateTime updatedAt;
 
-    @Column(name="update_at", nullable = false)
-    private Timestamp updateAt;
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
+    private List<MemberFood> memberFoods = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
+    private List<MemberTerm> memberTerms = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
+    private List<MemberMission> memberMissions = new ArrayList<>();
+
+    @OneToMany(mappedBy = "review", cascade = CascadeType.REMOVE)
+    private List<Review> reviews = new ArrayList<>();
 }
