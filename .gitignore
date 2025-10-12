@@ -1,0 +1,18 @@
+# macOS system files
+.DS_Store
+**/.DS_Store
+# 이전에 문제가 되었던 특정 경로도 포함
+치키-송치웅/.DS_Store
+치키-송치웅/week4/.DS_Store
+
+# Java / Spring Boot files
+# 컴파일된 클래스 파일
+*.class
+
+# Maven/Gradle 빌드 디렉토리
+/target/
+/build/
+
+# IDE files (IntelliJ IDEA)
+.idea/
+*.iml
