@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: umc_9th
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/Umc_study?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: validate   # 기존 테이블 유지, 스키마 일치 여부만 검사
+    properties:
+      hibernate:
+        show_sql: true #JPA가 실제 어떤 SQL을 실행하는지 눈으로 볼 수 있음
+        format_sql: true #sql 보기좋게 줄바꿈/들여쓰기 해줌
+        dialect: org.hibernate.dialect.MySQLDialect
+    open-in-view: false     # (선택) 영속성 컨텍스트 범위 축소
