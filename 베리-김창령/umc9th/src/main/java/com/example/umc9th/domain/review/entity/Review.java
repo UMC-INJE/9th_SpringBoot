@@ -2,7 +2,6 @@ package com.example.umc9th.domain.review.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
