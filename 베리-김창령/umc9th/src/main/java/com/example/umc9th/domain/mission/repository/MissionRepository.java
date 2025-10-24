@@ -7,5 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.time.LocalDate;
 
 public interface MissionRepository extends JpaRepository<Mission, Long> {
-    Page<Mission> findByStoreLocationNameAndDeadlineGreaterThanEqualOrderByCreatedAtDesc(String locationName, LocalDate today, Pageable pageable);
+    Page<Mission> findByStore_Location_NameAndDeadlineGreaterThanEqualOrderByCreatedAtDesc(
+            String locationName, LocalDate today, Pageable pageable);
 }
