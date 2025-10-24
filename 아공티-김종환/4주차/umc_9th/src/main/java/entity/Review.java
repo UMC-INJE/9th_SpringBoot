@@ -23,6 +23,6 @@ public class Review {
   @Column(name="rating", nullable=false) private Integer rating;
   @Column(name="content", columnDefinition="TEXT") private String content;
 
-  @Column(name="created_ad") // ← DB 오타(created_ad) 반영
+  @Column(name="created_at") // ← DB 오타(created_ad) 반영
   private LocalDateTime createdAt;
 }
