@@ -8,7 +8,7 @@ import com.example.umc_9th_chiki.Domain.Review.Entity.Reply;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList; // 👈 import 추가
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -41,7 +41,7 @@ public class Review extends BaseEntity {
     // ReviewPhoto와 1:N 관계 (컬렉션 초기화)
     @OneToMany(mappedBy = "review", cascade = CascadeType.ALL)
     @Builder.Default
-    private List<ReviewPhoto> reviewPhotoList = new ArrayList<>(); // 👈 컬렉션 초기화
+    private List<ReviewPhoto> reviewPhotoList = new ArrayList<>();
 
     // Reply와 1:N 관계 (컬렉션 초기화)
     @OneToMany(mappedBy = "review", cascade = CascadeType.ALL)

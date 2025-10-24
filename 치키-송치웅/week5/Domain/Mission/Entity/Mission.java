@@ -40,7 +40,7 @@ public class Mission extends BaseEntity {
     // MemberMission과 1:N 관계 (컬렉션 초기화)
     @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL)
     @Builder.Default
-    private List<MemberMission> userMissionList = new ArrayList<>(); // 👈 컬렉션 초기화
+    private List<MemberMission> userMissionList = new ArrayList<>();
 
     public void updateMission(String conditional, Integer point, LocalDate deadline) {
         this.conditional = conditional;
