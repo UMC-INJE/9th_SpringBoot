@@ -25,9 +25,6 @@ public class Review extends BaseEntity {
     @Column(name = "content", nullable = false)
     private String content;
 
-    @Column(name = "created_at",nullable = false)
-    private LocalDateTime createdAt;
-
     @Column(name = "star", nullable = false)
     private float star;
 
@@ -37,7 +34,7 @@ public class Review extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private Member user;
+    private Member member;
 
     @OneToMany(mappedBy = "review", cascade = CascadeType.REMOVE)
     private List<Reply> replies = new ArrayList<>();
