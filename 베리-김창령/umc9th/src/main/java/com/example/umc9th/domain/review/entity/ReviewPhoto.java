@@ -14,7 +14,7 @@ public class ReviewPhoto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "review_photo_id")
-    private Long reviewPhotoId;
+    private Long id;
 
     @Column(name = "photo_url", nullable = false, length = 500)
     private String photoUrl;

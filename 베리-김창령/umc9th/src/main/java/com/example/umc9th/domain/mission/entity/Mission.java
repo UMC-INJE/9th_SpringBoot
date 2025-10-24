@@ -20,7 +20,7 @@ public class Mission extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "mission_id")
-    private Long missionId;
+    private Long id;
 
     @Column(name = "deadline", nullable = false)
     private LocalDate deadline;
@@ -30,9 +30,6 @@ public class Mission extends BaseEntity {
 
     @Column(name = "point", nullable = false)
     private int point = 0;
-
-    @Column(name = "created_at",nullable = false)
-    private LocalDateTime createdAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id", nullable = false)
