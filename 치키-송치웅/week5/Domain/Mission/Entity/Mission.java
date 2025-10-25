@@ -42,6 +42,8 @@ public class Mission extends BaseEntity {
     @Builder.Default
     private List<MemberMission> userMissionList = new ArrayList<>();
 
+
+    // Dirty Checking을 위한 상태 변경값 저장 함수(미션 상세 정보 변경(조건,포인트,마감일))
     public void updateMission(String conditional, Integer point, LocalDate deadline) {
         this.conditional = conditional;
         this.point = point;

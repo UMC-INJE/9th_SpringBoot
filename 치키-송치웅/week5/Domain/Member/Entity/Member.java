@@ -73,11 +73,13 @@ public class Member extends BaseEntity {
     @Builder.Default
     private List<Review> reviewList = new ArrayList<>();
 
+
+    // Dirty Checking을 위한 상태 변경값 저장 함수(주소 변경)
     public void updateAddress(String address, String detailAddress) {
         this.address = address;
         this.detailAddress = detailAddress;
     }
-
+    // Dirty Checking을 위한 상태 변경값 저장 함수(포인트 적립)
     public void addPoint(int changePoint) {
         this.point += changePoint;
     }

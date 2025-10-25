@@ -31,9 +31,6 @@ public class Store extends BaseEntity {
     @Column(name = "detail_address", length = 255, nullable = false)
     private String detailAddress;
 
-    @Column(name = "approval", nullable = false)
-    @Builder.Default
-    private Boolean approval = false;
 
     // Location 엔티티와의 다대일(N:1) 관계 설정
     @ManyToOne(fetch = FetchType.LAZY)
@@ -50,10 +47,8 @@ public class Store extends BaseEntity {
     @Builder.Default
     private List<Review> reviewList = new ArrayList<>();
 
-    public void approveStore() {
-        this.approval = true;
-    }
 
+    // Dirty Checking을 위한 상태 변경값 저장 함수(가게 정보 변경)
     public void updateInfo(String managerNumber, String detailAddress) {
         this.managerNumber = managerNumber;
         this.detailAddress = detailAddress;
