@@ -26,9 +26,4 @@ public class UserMission {
   @Column(name="status", nullable=false, length=100)
   private String status;
 
-  @Column(name="requested_at")
-  private LocalDateTime requestedAt;
-
-  @Column(name="approved_at", nullable=true) // DB가 NN이면 true→false로 바꾸세요
-  private LocalDateTime approvedAt;
 }

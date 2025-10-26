@@ -5,24 +5,40 @@ import lombok.*;
 import java.util.*;
 
 @Entity
-@Table(name="store_tb")
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
+@Table(name = "store_tb")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Store {
-  @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name="stroe_id") // ← DB 오타 반영
-  private Integer storeId;
 
-  @ManyToOne(fetch=FetchType.LAZY, optional=false)
-  @JoinColumn(name="region_id", foreignKey=@ForeignKey(name="fk_store_region"))
-  private Region region;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "store_id") // DB에 맞게 수정 (기존 "stroe_id" 오타 제거)
+    private Integer storeId;
 
-  @Column(name="store_name", nullable=false, length=45)
-  private String storeName;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "region_id", foreignKey = @ForeignKey(name = "fk_store_region"))
+    private Region region;
 
-  @Column(name="dascription", columnDefinition = "TEXT") // ← DB 오타 반영
-  private String description;
+    @Column(name = "store_name", nullable = false, length = 45)
+    private String storeName;
 
-  @OneToMany(mappedBy="store") @Builder.Default private List<Review> reviews = new ArrayList<>();
-  @OneToMany(mappedBy="store") @Builder.Default private List<Inquiry> inquiries = new ArrayList<>();
-  @OneToMany(mappedBy="store") @Builder.Default private List<Mission> missions = new ArrayList<>();
+    @Column(name = "user_number", nullable = false)
+    private Integer userNumber;
+
+    @Column(name = "detail_address", nullable = false, length = 45)
+    private String detailAddress;
+
+    @OneToMany(mappedBy = "store")
+    @Builder.Default
+    private List<Review> reviews = new ArrayList<>();
+
+    @OneToMany(mappedBy = "store")
+    @Builder.Default
+    private List<Inquiry> inquiries = new ArrayList<>();
+
+    @OneToMany(mappedBy = "store")
+    @Builder.Default
+    private List<Mission> missions = new ArrayList<>();
 }
