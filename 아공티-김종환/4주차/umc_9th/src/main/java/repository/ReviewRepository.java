@@ -7,10 +7,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.transaction.annotation.Transactional;
 
+public interface ReviewRepository extends JpaRepository<Review, Long>, ReviewRepositoryCustom {
 
-public interface ReviewRepository extends JpaRepository<Review, Long> {
-
-    // 2️⃣ 직접 리뷰 작성 (JPQL 또는 Native Query)
+    // 리뷰 작성 (INSERT)
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO review_tb (user_id, store_id, content, rating, created_at) " +
