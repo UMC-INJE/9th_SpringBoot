@@ -22,7 +22,7 @@ public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
-    private Long memberId;
+    private Long id;
 
     @Column(name = "name", nullable = false, length = 50)
     private String name;
@@ -31,17 +31,17 @@ public class Member {
     @Column(name = "gender", nullable = false)
     private Gender gender = Gender.NONE;
 
-    @Column(name = "birth")
+    @Column(name = "birth", nullable = false)
     private LocalDate birth;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "address", nullable = false)
-    private Address address = Address.NONE;
+    private Address address;
 
     @Column(name = "detail_address", nullable = false, length = 100)
     private String detailAddress;
 
-    @Column(name = "social_uid", length = 120)
+    @Column(name = "social_uid", nullable = false, length = 120)
     private String socialuid;
 
     @Enumerated(EnumType.STRING)

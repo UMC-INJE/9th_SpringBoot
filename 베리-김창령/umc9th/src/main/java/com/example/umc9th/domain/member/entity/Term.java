@@ -18,7 +18,7 @@ public class Term {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "term_id")
-    private Long termId;
+    private Long id;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "name")

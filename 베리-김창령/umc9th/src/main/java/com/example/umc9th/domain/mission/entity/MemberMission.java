@@ -1,8 +1,10 @@
 package com.example.umc9th.domain.mission.entity;
 
+import com.example.umc9th.global.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import com.example.umc9th.domain.member.entity.Member;
+import org.springframework.data.annotation.CreatedDate;
 
 @Entity
 @Builder
@@ -10,12 +12,12 @@ import com.example.umc9th.domain.member.entity.Member;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 @Table(name = "member_mission")
-public class MemberMission {
+public class MemberMission extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_mission_id")
-    private Long memberMissionId;
+    private Long id;
 
     @Column(name = "is_complete", nullable = false)
     private boolean isComplete = false;
