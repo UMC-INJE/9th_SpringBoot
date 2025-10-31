@@ -1,3 +1,4 @@
+// entity/Store.java
 package entity;
 
 import jakarta.persistence.*;
@@ -14,7 +15,7 @@ public class Store {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "store_id") // DB에 맞게 수정 (기존 "stroe_id" 오타 제거)
+    @Column(name = "store_id")
     private Integer storeId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

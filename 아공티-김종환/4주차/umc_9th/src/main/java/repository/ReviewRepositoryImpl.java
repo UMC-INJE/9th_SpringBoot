@@ -1,43 +1,60 @@
+// src/main/java/repository/ReviewRepositoryImpl.java
 package repository;
 
-import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.querydsl.core.BooleanBuilder;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import entity.QReview;
 import entity.Review;
-import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-@RequiredArgsConstructor
 public class ReviewRepositoryImpl implements ReviewRepositoryCustom {
 
     private final JPAQueryFactory queryFactory;
 
+    // 명시적 생성자 주입 
+    public ReviewRepositoryImpl(JPAQueryFactory queryFactory) {
+        this.queryFactory = queryFactory;
+    }
+
     @Override
-    public List<Review> findMyReviews(Long userId, String storeName, Integer rating) {
+    public Page<Review> findMyReviews(Integer userId, String storeName, Integer rating, Pageable pageable) {
         QReview review = QReview.review;
-        BooleanBuilder builder = new BooleanBuilder();
 
-        // 내가 작성한 리뷰만
-        builder.and(review.user.userId.eq(userId));
+        BooleanBuilder where = new BooleanBuilder()
+                // 내가 작성한 리뷰
+                .and(review.user.userId.eq(userId));
 
-        // 가게명 필터 (optional)
-        if (storeName != null && !storeName.isEmpty()) {
-            builder.and(review.store.storeName.containsIgnoreCase(storeName));
+        // 가게별 필터 
+        if (storeName != null && !storeName.isBlank()) {
+            where.and(review.store.storeName.containsIgnoreCase(storeName));
         }
 
-        // 별점 필터 (optional)
+        // 별점별 필터 (선택, 1~5 정수)
         if (rating != null) {
-            builder.and(review.rating.eq(rating));
+            where.and(review.rating.eq(rating));
+            
         }
 
-        // QueryDSL 쿼리 실행
-        return queryFactory
+        // 내용 조회 (최신순 + 페이징)
+        List<Review> content = queryFactory
                 .selectFrom(review)
-                .where(builder)
+                .where(where)
                 .orderBy(review.createdAt.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
                 .fetch();
+
+        // 총 건수 (count 쿼리 분리)
+        Long total = queryFactory
+                .select(review.count())
+                .from(review)
+                .where(where)
+                .fetchOne();
+
+        return new PageImpl<>(content, pageable, total == null ? 0 : total);
     }
 }
