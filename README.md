@@ -1,6 +1,6 @@
-# 9th_Android
+# 9th_Spring
 
-# 💚 UMC INJE 9th_Android
+# 💚 UMC INJE 9th_Spring
 
 [UMC 9th를 위한 깃허브 사용법 및 규칙](https://www.notion.so/makeus-challenge/Git-Hub-268b57f4596b812a8868c18715676502?source=copy_link)
 
@@ -38,9 +38,10 @@ Copyright © Sojung Park (Bei) All rights reserved.
 
 
 ## 🍀 Members
-| [![텍스트](https://avatars.githubusercontent.com/u/162302440?v=4)](https://github.com/sfpahs) | [![텍스트](https://avatars.githubusercontent.com/u/208924467?v=4)](https://github.com/hyeryunYou) |
-|:------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------:|
-|                                           심씨/심규석                                           |                                             줄리/유혜련                                             |
+
+| [ ![텍스트](https://avatars.githubusercontent.com/u/212698944?v=4)](https://github.com/Justin-Kim-KR) | [  ![텍스트](https://avatars.githubusercontent.com/u/117339112?v=4)](https://github.com/kimjonghn) | [![텍스트](https://avatars.githubusercontent.com/u/230173129?v=4)](https://github.com/chiung22) |
+|----------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
+| 베리/김창령                                                                                             | 아공티/김종환                                                                                         | 치키/송치웅                                                                                       |
 
 <br>
 
