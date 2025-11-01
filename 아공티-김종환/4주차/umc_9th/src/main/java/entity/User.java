@@ -1,3 +1,4 @@
+// entity/User.java
 package entity;
 
 import jakarta.persistence.*;

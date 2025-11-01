@@ -1,8 +1,11 @@
+// src/main/java/repository/ReviewRepositoryCustom.java
 package repository;
 
 import entity.Review;
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface ReviewRepositoryCustom {
-    List<Review> findMyReviews(Long userId, String storeName, Integer rating);
+    
+    Page<Review> findMyReviews(Integer userId, String storeName, Integer rating, Pageable pageable);
 }
