@@ -31,6 +31,6 @@ public class Review {
   private String content;
 
   // DB 컬럼 오타(created_ad) 매핑 → 필드명은 createdAt 유지
-  @Column(name="created_at")
+  @Column(name="created_ad")
   private LocalDateTime createdAt;
 }
