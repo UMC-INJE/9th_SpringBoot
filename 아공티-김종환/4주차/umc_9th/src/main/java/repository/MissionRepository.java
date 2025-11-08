@@ -14,7 +14,7 @@ public interface MissionRepository extends JpaRepository<Mission, Integer> {
         SELECT m FROM Mission m
         JOIN m.store s
         JOIN s.region r
-        WHERE r.regionId = :regionId
+        WHERE r.id = :regionId
         ORDER BY m.deadline ASC
     """)
     Page<Mission> findAvailableMissionsByRegion(@Param("regionId") Integer regionId, Pageable pageable);
