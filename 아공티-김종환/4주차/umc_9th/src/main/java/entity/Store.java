@@ -1,4 +1,3 @@
-// entity/Store.java
 package entity;
 
 import jakarta.persistence.*;
@@ -31,13 +30,14 @@ public class Store {
     @Column(name = "detail_address", nullable = false, length = 45)
     private String detailAddress;
 
-    @OneToMany(mappedBy = "store")
-    @Builder.Default
-    private List<Review> reviews = new ArrayList<>();
-
+    // ✅ Inquiry 쪽의 store 필드와 정확히 연결됨
     @OneToMany(mappedBy = "store")
     @Builder.Default
     private List<Inquiry> inquiries = new ArrayList<>();
+
+    @OneToMany(mappedBy = "store")
+    @Builder.Default
+    private List<Review> reviews = new ArrayList<>();
 
     @OneToMany(mappedBy = "store")
     @Builder.Default
