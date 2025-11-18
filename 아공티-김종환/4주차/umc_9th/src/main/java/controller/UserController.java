@@ -17,7 +17,7 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("/sign-up")
+    @PostMapping("/signup")
     public ApiResponse<UserResDto.SignUpDto> signUp(
             @RequestBody UserReqDto.SignUpDto dto
     ) {

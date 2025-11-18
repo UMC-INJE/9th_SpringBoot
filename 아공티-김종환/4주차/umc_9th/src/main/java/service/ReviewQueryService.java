@@ -1,4 +1,3 @@
-// src/main/java/service/ReviewQueryService.java
 package service;
 
 import dto.ReviewResponse;
@@ -17,10 +16,7 @@ public class ReviewQueryService {
 
     private final ReviewRepository reviewRepository;
 
-    /**
-     * 기본형: "내가 쓴 리뷰" 목록 (가게명/별점 필터 + 페이징)
-     */
-    @Transactional(readOnly = true) // ★ 추가
+    @Transactional(readOnly = true) 
     public Page<ReviewResponse> getMyReviews(
             Integer userId,
             String storeName,
@@ -28,15 +24,15 @@ public class ReviewQueryService {
             int page,
             int size
     ) {
-        // 입력 정규화
+       
         String normalizedStoreName = (storeName != null && !storeName.isBlank())
                 ? storeName.trim()
                 : null;
 
         int safePage = Math.max(page, 0);
-        int safeSize = Math.min(Math.max(size, 1), 100); // 1~100 제한
+        int safeSize = Math.min(Math.max(size, 1), 100); 
 
-        // 정렬은 QueryDSL 쿼리 내부에서 createdAt DESC로 처리하므로 여기선 unsorted
+        
         Pageable pageable = PageRequest.of(safePage, safeSize);
 
         Page<Review> result = reviewRepository.findMyReviews(

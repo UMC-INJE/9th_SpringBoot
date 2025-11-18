@@ -17,7 +17,7 @@ public class FoodCategory {
     @Column(name = "name", nullable = false, unique = true, length = 100)
     private String name;
 
-    // User 쪽 필드명과 정확히 일치해야 함: "foodCategory"
+
     @OneToMany(mappedBy = "foodCategory")
     @Builder.Default
     private List<User> users = new ArrayList<>();
