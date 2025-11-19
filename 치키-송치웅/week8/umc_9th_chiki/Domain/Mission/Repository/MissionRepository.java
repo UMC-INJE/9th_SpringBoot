@@ -1,4 +1,4 @@
-package com.example.umc_9th_chiki.repository;
+package com.example.umc_9th_chiki.Domain.Mission.Repository;
 
 import com.example.umc_9th_chiki.Domain.Mission.Entity.Mission;
 import com.example.umc_9th_chiki.Domain.Store.Entity.Store;

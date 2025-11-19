@@ -1,10 +1,10 @@
-package com.example.umc_9th_chiki.service.query;
+package com.example.umc_9th_chiki.Domain.Review.Service.query;
 
 import com.example.umc_9th_chiki.Domain.Review.Entity.QReview;
 import com.example.umc_9th_chiki.Domain.Review.Entity.Review;
 import com.example.umc_9th_chiki.Domain.Store.Entity.QStore;
 import com.example.umc_9th_chiki.Domain.Store.Entity.QLocation;
-import com.example.umc_9th_chiki.repository.ReviewRepository;
+import com.example.umc_9th_chiki.Domain.Review.Repository.ReviewRepository;
 import com.querydsl.core.BooleanBuilder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

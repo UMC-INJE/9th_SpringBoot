@@ -1,4 +1,4 @@
-package com.example.umc_9th_chiki.service.command;
+package com.example.umc_9th_chiki.Domain.Store.Service.command;
 
 import com.example.umc_9th_chiki.Domain.Store.Dto.StoreRequestDTO;
 import com.example.umc_9th_chiki.Domain.Store.Entity.Store;

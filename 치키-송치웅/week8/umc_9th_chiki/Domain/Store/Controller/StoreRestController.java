@@ -5,7 +5,7 @@ import com.example.umc_9th_chiki.Domain.Store.Dto.StoreRequestDTO;
 import com.example.umc_9th_chiki.Domain.Store.Dto.StoreResponseDTO;
 import com.example.umc_9th_chiki.Domain.Store.Entity.Store;
 import com.example.umc_9th_chiki.Global.apiPayload.ApiResponse; // ApiResponse 위치 확인 필요!
-import com.example.umc_9th_chiki.service.command.StoreCommandService;
+import com.example.umc_9th_chiki.Domain.Store.Service.command.StoreCommandService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;

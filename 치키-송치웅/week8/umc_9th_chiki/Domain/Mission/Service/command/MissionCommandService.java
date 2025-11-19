@@ -1,4 +1,4 @@
-package com.example.umc_9th_chiki.service.command;
+package com.example.umc_9th_chiki.Domain.Mission.Service.command;
 
 import com.example.umc_9th_chiki.Domain.Member.Entity.Mapping.MemberMission;
 import com.example.umc_9th_chiki.Domain.Mission.Dto.MissionRequestDTO;

@@ -1,4 +1,4 @@
-package com.example.umc_9th_chiki.repository;
+package com.example.umc_9th_chiki.Domain.Review.Repository;
 
 import com.example.umc_9th_chiki.Domain.Review.Entity.QReview;
 import com.example.umc_9th_chiki.Domain.Review.Entity.Review;

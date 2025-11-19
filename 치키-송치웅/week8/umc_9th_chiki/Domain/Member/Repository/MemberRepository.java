@@ -1,4 +1,4 @@
-package com.example.umc_9th_chiki.repository;
+package com.example.umc_9th_chiki.Domain.Member.Repository;
 
 import com.example.umc_9th_chiki.Domain.Member.Entity.Member;
 import com.example.umc_9th_chiki.Domain.Member.Enums.Gender;

@@ -3,7 +3,7 @@ package com.example.umc_9th_chiki.Domain.Review.Controller;
 import com.example.umc_9th_chiki.Domain.Review.Converter.ReviewConverter;
 import com.example.umc_9th_chiki.Domain.Review.Dto.ReviewResponseDTO;
 import com.example.umc_9th_chiki.Domain.Review.Entity.Review;
-import com.example.umc_9th_chiki.service.query.ReviewQueryService;
+import com.example.umc_9th_chiki.Domain.Review.Service.query.ReviewQueryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;

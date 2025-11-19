@@ -1,4 +1,4 @@
-package com.example.umc_9th_chiki.service.command;
+package com.example.umc_9th_chiki.Domain.Member.Service.command;
 
 import com.example.umc_9th_chiki.Domain.Food.Exception.FoodException;
 import com.example.umc_9th_chiki.Domain.Food.Exception.code.FoodErrorCode;
@@ -9,9 +9,9 @@ import com.example.umc_9th_chiki.Domain.Member.Dto.MemberResDTO;
 import com.example.umc_9th_chiki.Domain.Member.Entity.Mapping.MemberFood;
 import com.example.umc_9th_chiki.Domain.Member.Entity.Member;
 import com.example.umc_9th_chiki.Domain.Store.Entity.Food;
-import com.example.umc_9th_chiki.repository.FoodRepository;
-import com.example.umc_9th_chiki.repository.MemberFoodRepository;
-import com.example.umc_9th_chiki.repository.MemberRepository;
+import com.example.umc_9th_chiki.Domain.Food.Repository.FoodRepository;
+import com.example.umc_9th_chiki.Domain.Member.Repository.MemberFoodRepository;
+import com.example.umc_9th_chiki.Domain.Member.Repository.MemberRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -6,7 +6,7 @@ import com.example.umc_9th_chiki.Domain.Mission.Dto.MissionRequestDTO;
 import com.example.umc_9th_chiki.Domain.Mission.Dto.MissionResponseDTO;
 import com.example.umc_9th_chiki.Global.apiPayload.ApiResponse;
 import com.example.umc_9th_chiki.Global.apiPayload.code.GeneralSuccessCode; // 성공 코드
-import com.example.umc_9th_chiki.service.command.MissionCommandService;
+import com.example.umc_9th_chiki.Domain.Mission.Service.command.MissionCommandService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.example.umc_9th_chiki.service.command;
+package com.example.umc_9th_chiki.Domain.Member.Service.command;
 
 import com.example.umc_9th_chiki.Domain.Member.Dto.MemberReqDTO;
 import com.example.umc_9th_chiki.Domain.Member.Dto.MemberResDTO;

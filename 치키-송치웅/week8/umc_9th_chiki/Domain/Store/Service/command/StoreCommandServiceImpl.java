@@ -1,4 +1,4 @@
-package com.example.umc_9th_chiki.service.command;
+package com.example.umc_9th_chiki.Domain.Store.Service.command;
 
 import com.example.umc_9th_chiki.Domain.Review.Converter.ReviewConverter;
 import com.example.umc_9th_chiki.Domain.Review.Dto.ReviewRequestDTO;
@@ -6,10 +6,10 @@ import com.example.umc_9th_chiki.Domain.Review.Entity.Review;
 import com.example.umc_9th_chiki.Domain.Store.Converter.StoreConverter;
 import com.example.umc_9th_chiki.Domain.Store.Dto.StoreRequestDTO;
 import com.example.umc_9th_chiki.Domain.Store.Entity.Store;
-import com.example.umc_9th_chiki.repository.LocationRepository;
-import com.example.umc_9th_chiki.repository.MemberRepository;
-import com.example.umc_9th_chiki.repository.ReviewRepository;
-import com.example.umc_9th_chiki.repository.StoreRepository;
+import com.example.umc_9th_chiki.Domain.Store.Repository.LocationRepository;
+import com.example.umc_9th_chiki.Domain.Member.Repository.MemberRepository;
+import com.example.umc_9th_chiki.Domain.Review.Repository.ReviewRepository;
+import com.example.umc_9th_chiki.Domain.Store.Repository.StoreRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

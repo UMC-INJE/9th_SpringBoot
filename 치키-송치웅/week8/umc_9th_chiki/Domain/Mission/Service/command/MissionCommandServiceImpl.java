@@ -1,4 +1,4 @@
-package com.example.umc_9th_chiki.service.command;
+package com.example.umc_9th_chiki.Domain.Mission.Service.command;
 
 import com.example.umc_9th_chiki.Domain.Member.Entity.Mapping.MemberMission;
 import com.example.umc_9th_chiki.Domain.Member.Entity.Member;
@@ -6,9 +6,9 @@ import com.example.umc_9th_chiki.Domain.Mission.Converter.MissionConverter;
 import com.example.umc_9th_chiki.Domain.Mission.Dto.MissionRequestDTO;
 import com.example.umc_9th_chiki.Domain.Mission.Entity.Mission;
 import com.example.umc_9th_chiki.Domain.Mission.Enums.MissionStatus;
-import com.example.umc_9th_chiki.repository.MemberMissionRepository;
-import com.example.umc_9th_chiki.repository.MemberRepository;
-import com.example.umc_9th_chiki.repository.MissionRepository;
+import com.example.umc_9th_chiki.Domain.Member.Repository.MemberMissionRepository;
+import com.example.umc_9th_chiki.Domain.Member.Repository.MemberRepository;
+import com.example.umc_9th_chiki.Domain.Mission.Repository.MissionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
