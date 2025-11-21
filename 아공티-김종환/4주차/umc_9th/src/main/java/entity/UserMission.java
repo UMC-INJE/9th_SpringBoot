@@ -22,7 +22,7 @@ public class UserMission {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_mission_id") // ✅ DB 실제 컬럼명과 정확히 일치시킴
+    @Column(name = "user_mission_id") 
     private Integer userMissionId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

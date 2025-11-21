@@ -1,4 +1,3 @@
-// entity/User.java
 package entity;
 
 import jakarta.persistence.*;
@@ -19,7 +18,7 @@ public class User {
     @Column(name = "user_id")
     private Integer userId;
 
-    // ✅ 여기 추가: 유저가 속한 음식 카테고리 (다:1)
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "food_category_id",
                 foreignKey = @ForeignKey(name = "fk_user_food_category"))

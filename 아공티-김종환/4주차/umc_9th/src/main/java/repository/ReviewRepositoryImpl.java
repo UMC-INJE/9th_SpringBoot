@@ -1,4 +1,3 @@
-// src/main/java/repository/ReviewRepositoryImpl.java
 package repository;
 
 import com.querydsl.core.BooleanBuilder;
@@ -28,16 +27,16 @@ public class ReviewRepositoryImpl implements ReviewRepositoryCustom {
         QUser user = QUser.user;
 
         BooleanBuilder where = new BooleanBuilder()
-                .and(review.user.userId.eq(userId)); // ← 여기서 user.userId 필드명은 실제 엔티티에 맞게!
+                .and(review.user.userId.eq(userId)); 
 
         if (storeName != null && !storeName.isBlank()) {
-            where.and(review.store.storeName.containsIgnoreCase(storeName)); // 엔티티 필드명과 매칭 필요
+            where.and(review.store.storeName.containsIgnoreCase(storeName)); 
         }
         if (rating != null) {
             where.and(review.rating.eq(rating));
         }
 
-        // 내용 조회: 반드시 fetchJoin으로 연관 로딩
+
         List<Review> content = queryFactory
                 .selectFrom(review)
                 .join(review.store, store).fetchJoin()
@@ -48,11 +47,11 @@ public class ReviewRepositoryImpl implements ReviewRepositoryCustom {
                 .limit(pageable.getPageSize())
                 .fetch();
 
-        // 총 건수: fetchJoin 금지
+
         Long total = queryFactory
                 .select(review.count())
                 .from(review)
-                .join(review.store, store) // 조인 조건 동일하게(= where 조건 동일한 결과 수)
+                .join(review.store, store) 
                 .join(review.user, user)
                 .where(where)
                 .fetchOne();

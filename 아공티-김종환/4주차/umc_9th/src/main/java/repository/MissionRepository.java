@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface MissionRepository extends JpaRepository<Mission, Integer> {
 
-    // 현재 지역(regionId)에 해당하는 미션 목록 (도전 가능한 미션)
+    // 현재 지역(regionId)에 해당하는 미션 목록
     @Query("""
         SELECT m FROM Mission m
         JOIN m.store s
