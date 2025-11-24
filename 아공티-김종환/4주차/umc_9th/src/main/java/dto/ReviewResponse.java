@@ -4,7 +4,7 @@ import entity.Review;
 import java.time.LocalDateTime;
 
 public record ReviewResponse(
-        Integer id,          // ← Long → Integer 로 변경
+        Integer id,          
         String storeName,
         Integer rating,
         String content,
@@ -12,7 +12,7 @@ public record ReviewResponse(
 ) {
     public static ReviewResponse from(Review r) {
         return new ReviewResponse(
-                r.getId(),                         // OK: Integer → Integer
+                r.getId(),                        
                 r.getStore().getStoreName(),
                 r.getRating(),
                 r.getContent(),

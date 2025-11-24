@@ -29,10 +29,10 @@ public class Mission {
     private Integer point;
 
     @Column(name = "deadline", nullable = false)
-    private LocalDate deadline; // MySQL DATE → Java LocalDate
+    private LocalDate deadline; 
 
     @Column(name = "created_at", nullable = false)
-    private Integer createdAt; // DB에서 INT로 관리되는 created_at
+    private Integer createdAt; 
 
     @OneToMany(mappedBy = "mission")
     @Builder.Default
