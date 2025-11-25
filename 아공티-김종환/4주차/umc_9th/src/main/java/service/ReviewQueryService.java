@@ -29,7 +29,7 @@ public class ReviewQueryService {
                 ? storeName.trim()
                 : null;
 
-        int safePage = Math.max(page, 0);
+        int safePage = Math.max(page - 1, 0);
         int safeSize = Math.min(Math.max(size, 1), 100); 
 
         

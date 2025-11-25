@@ -23,10 +23,21 @@ public class ReviewController {
             @RequestParam Integer userId,
             @RequestParam(required = false) String storeName,
             @RequestParam(required = false) Integer rating,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
+            @RequestParam(defaultValue = "1") Integer page,  // 1 이상
+            @RequestParam(defaultValue = "10") int size      // 실제론 10 고정 사용
     ) {
-        Page<ReviewResponse> reviews = reviewQueryService.getMyReviews(userId, storeName, rating, page, size);
+        if (page == null || page < 1) {
+            page = 1;
+        }
+
+        Page<ReviewResponse> reviews = reviewQueryService.getMyReviews(
+                userId,
+                storeName,
+                rating,
+                page,
+                size
+        );
+
         return ApiResponse.success(reviews, SuccessEnum.OK);
     }
 
@@ -50,5 +61,5 @@ public class ReviewController {
         reviewService.createReview(storeId, requestDto);
         return ApiResponse.success("리뷰 등록 완료!", SuccessEnum.OK);
     }
-
+    
 }

@@ -18,4 +18,5 @@ public interface MissionRepository extends JpaRepository<Mission, Integer> {
         ORDER BY m.deadline ASC
     """)
     Page<Mission> findAvailableMissionsByRegion(@Param("regionId") Integer regionId, Pageable pageable);
+    Page<Mission> findByStore_StoreId(Integer storeId, Pageable pageable);
 }
