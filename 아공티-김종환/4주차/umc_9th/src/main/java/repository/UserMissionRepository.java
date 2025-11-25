@@ -10,4 +10,5 @@ public interface UserMissionRepository extends JpaRepository<UserMission, Intege
     
     Page<UserMission> findByUser_UserIdAndStatus(Integer userId, String status, Pageable pageable);
     boolean existsByUser_UserIdAndMission_IdAndStatus(Integer userId,Integer missionId,String status);
+    
 }
