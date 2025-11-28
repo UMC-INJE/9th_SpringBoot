@@ -3,18 +3,16 @@ package com.example.umc9th.domain.mission.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import com.example.umc9th.global.entity.BaseEntity;
 import com.example.umc9th.domain.store.entity.Store;
 
 @Entity
-@Builder
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@Getter
-@Table(name = "mission")
+@Builder
 public class Mission extends BaseEntity {
 
     @Id
@@ -22,19 +20,26 @@ public class Mission extends BaseEntity {
     @Column(name = "mission_id")
     private Long id;
 
-    @Column(name = "deadline", nullable = false)
+    @Column(nullable = false)
     private LocalDate deadline;
 
-    @Column(name = "conditional", nullable = false, length = 200)
+    @Column(nullable = false)
     private String conditional;
 
-    @Column(name = "point", nullable = false)
-    private int point = 0;
+    @Column(nullable = false)
+    private int point;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id", nullable = false)
     private Store store;
 
-    @OneToMany(mappedBy = "mission", cascade = CascadeType.REMOVE)
+    @Builder.Default
+    @OneToMany(mappedBy = "mission", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<MemberMission> memberMissions = new ArrayList<>();
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
 }
+
+

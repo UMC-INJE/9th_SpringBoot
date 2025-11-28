@@ -2,19 +2,18 @@ package com.example.umc9th.domain.review.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.example.umc9th.global.entity.BaseEntity;
 import com.example.umc9th.domain.store.entity.Store;
 import com.example.umc9th.domain.member.entity.Member;
 
 @Entity
-@Builder
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@Getter
-@Table(name = "review")
+@Builder
 public class Review extends BaseEntity {
 
     @Id
@@ -22,10 +21,10 @@ public class Review extends BaseEntity {
     @Column(name = "review_id")
     private Long id;
 
-    @Column(name = "content", nullable = false)
+    @Column(nullable = false)
     private String content;
 
-    @Column(name = "star", nullable = false)
+    @Column(nullable = false)
     private float star;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -36,9 +35,15 @@ public class Review extends BaseEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private Member member;
 
-    @OneToMany(mappedBy = "review", cascade = CascadeType.REMOVE)
+    @Builder.Default
+    @OneToMany(mappedBy = "review", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<ReviewPhoto> reviewPhotos = new ArrayList<>();
+
+    @Builder.Default
+    @OneToMany(mappedBy = "review", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Reply> replies = new ArrayList<>();
 
-    @OneToMany(mappedBy = "review", cascade = CascadeType.REMOVE)
-    private List<ReviewPhoto> reviewPhotos = new ArrayList<>();
+    public void setStore(Store store) {
+        this.store = store;
+    }
 }

@@ -6,11 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Builder
+@Getter @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@Getter
-@Table(name = "location")
 public class Location {
 
     @Id
@@ -18,9 +16,9 @@ public class Location {
     @Column(name = "location_id")
     private Long id;
 
-    @Column(name = "name", nullable = false, length = 100)
     private String name;
 
     @OneToMany(mappedBy = "location")
     private List<Store> stores = new ArrayList<>();
 }
+
