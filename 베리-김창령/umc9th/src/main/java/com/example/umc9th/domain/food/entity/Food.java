@@ -1,18 +1,16 @@
-package com.example.umc9th.domain.member.entity;
+package com.example.umc9th.domain.food.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import com.example.umc9th.domain.member.enums.FoodName;
+import com.example.umc9th.domain.food.enums.FoodName;
 import com.example.umc9th.domain.member.entity.mapping.MemberFood;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Builder
+@Getter @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@Getter
-@Table(name = "food")
 public class Food {
 
     @Id
@@ -21,9 +19,9 @@ public class Food {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "name")
-    private FoodName name = FoodName.NONE;
+    private FoodName name;
 
-    @OneToMany(mappedBy = "food")
+    @OneToMany(mappedBy = "food", cascade = CascadeType.REMOVE)
     private List<MemberFood> memberFoods = new ArrayList<>();
 }
+

@@ -4,15 +4,16 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.example.umc9th.domain.mission.entity.Mission;
 import com.example.umc9th.domain.review.entity.Review;
 
 @Entity
-@Builder
+@Table(name = "store")
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@Getter
-@Table(name = "store")
+@Builder
 public class Store {
 
     @Id
@@ -20,22 +21,40 @@ public class Store {
     @Column(name = "store_id")
     private Long id;
 
-    @Column(name = "name", nullable = false, length = 150)
+    @Column(nullable = false)
     private String name;
 
-    @Column(name = "manager_number", nullable = false)
+    @Column(name = "manager_number")
     private Long managerNumber;
 
-    @Column(name = "detail_address", nullable = false)
+    @Column(name = "detail_address")
     private String detailAddress;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "location_id", nullable = false)
     private Location location;
 
-    @OneToMany(mappedBy = "store")
+    @Builder.Default
+    @OneToMany(mappedBy = "store", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Review> reviews = new ArrayList<>();
+
+    @Builder.Default
+    @OneToMany(mappedBy = "store", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Mission> missions = new ArrayList<>();
 
-    @OneToMany(mappedBy = "store")
-    private List<Review> reviews = new ArrayList<>();
+    public void addReview(Review review) {
+        this.reviews.add(review);
+        review.setStore(this);
+    }
+
+    public void addMission(Mission mission) {
+        this.missions.add(mission);
+        mission.setStore(this);
+    }
+
+    public void changeName(String name) { this.name = name; }
+
+    public void changeDetailAddress(String detailAddress) {
+        this.detailAddress = detailAddress;
+    }
 }

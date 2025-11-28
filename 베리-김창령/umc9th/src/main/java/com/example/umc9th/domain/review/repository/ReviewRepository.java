@@ -1,10 +1,15 @@
-// src/main/java/com/example/umc9th/domain/review/repository/ReviewRepository.java
 package com.example.umc9th.domain.review.repository;
 
+import com.example.umc9th.domain.member.entity.Member;
 import com.example.umc9th.domain.review.entity.Review;
+import com.example.umc9th.domain.store.entity.Store;
 import org.springframework.data.jpa.repository.JpaRepository;
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface ReviewRepository extends JpaRepository<Review, Long>, ReviewQueryDsl {
-    List<Review> findByStore_IdOrderByCreatedAtDesc(Long storeId);
+
+    Page<Review> findAllByStore(Store store, Pageable pageable);
+
+    Page<Review> findAllByMember(Member member, Pageable pageable);
 }

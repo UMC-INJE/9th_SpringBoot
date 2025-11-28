@@ -1,41 +1,47 @@
-// src/main/java/com/example/umc9th/domain/review/repository/ReviewQueryDslImpl.java
 package com.example.umc9th.domain.review.repository;
 
 import com.example.umc9th.domain.review.entity.QReview;
 import com.example.umc9th.domain.review.entity.Review;
 import com.example.umc9th.domain.store.entity.QLocation;
 import com.example.umc9th.domain.store.entity.QStore;
-import com.querydsl.core.types.Predicate;
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-@Repository
 @RequiredArgsConstructor
 public class ReviewQueryDslImpl implements ReviewQueryDsl {
 
-    private final ReviewRepository reviewRepository;
-    private final EntityManager em;
+    private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<Review> searchReview(
-        Predicate predicate
-    ){
-
-        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
+    public Page<Review> searchReview(BooleanBuilder builder, Pageable pageable) {
 
         QReview review = QReview.review;
         QStore store = QStore.store;
         QLocation location = QLocation.location;
 
-        return queryFactory
+        List<Review> content = queryFactory
                 .selectFrom(review)
-                .leftJoin(store).on(store.id.eq(review.store.id))
-                .leftJoin(location).on(location.id.eq(store.location.id))
-                .where(predicate)
+                .leftJoin(review.store, store).fetchJoin()
+                .leftJoin(store.location, location).fetchJoin()
+                .where(builder)
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
                 .fetch();
+
+        Long total = queryFactory
+                .select(review.count())
+                .from(review)
+                .leftJoin(review.store, store)
+                .leftJoin(store.location, location)
+                .where(builder)
+                .fetchOne();
+
+        return new PageImpl<>(content, pageable, total);
     }
 }

@@ -1,16 +1,14 @@
 package com.example.umc9th.domain.member.entity.mapping;
 
-import com.example.umc9th.domain.member.entity.Food;
+import com.example.umc9th.domain.food.entity.Food;
 import com.example.umc9th.domain.member.entity.Member;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Builder
+@Getter @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@Getter
-@Table(name = "member_food")
 public class MemberFood {
 
     @Id
@@ -26,3 +24,4 @@ public class MemberFood {
     @JoinColumn(name = "food_id", nullable = false)
     private Food food;
 }
+
