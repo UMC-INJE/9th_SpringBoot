@@ -1,4 +1,4 @@
-package com.example.umc9th.domain.member.enums;
+package com.example.umc9th.domain.food.enums;
 
 public enum FoodName {
     NONE,

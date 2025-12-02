@@ -1,32 +1,44 @@
 package com.example.umc9th.domain.mission.entity;
 
-import com.example.umc9th.global.entity.BaseEntity;
+import com.example.umc9th.domain.member.entity.Member;
 import jakarta.persistence.*;
 import lombok.*;
-import com.example.umc9th.domain.member.entity.Member;
-import org.springframework.data.annotation.CreatedDate;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
 
 @Entity
-@Builder
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-@Table(name = "member_mission")
-public class MemberMission extends BaseEntity {
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@Builder
+public class MemberMission {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_mission_id")
     private Long id;
 
-    @Column(name = "is_complete", nullable = false)
-    private boolean isComplete = false;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mission_id", nullable = false)
     private Mission mission;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id", nullable = false)
-    private Member member;
+    @Column(name = "is_complete", nullable = false)
+    private Boolean isComplete = false;
+
+    @CreationTimestamp
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    public void complete() {
+        this.isComplete = true;
+    }
+
+    public Boolean getIsComplete() {
+        return this.isComplete;
+    }
 }

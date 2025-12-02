@@ -8,11 +8,9 @@ import com.example.umc9th.domain.member.entity.mapping.MemberTerm;
 import com.example.umc9th.domain.member.enums.TermName;
 
 @Entity
-@Builder
+@Getter @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@Getter
-@Table(name = "term")
 public class Term {
 
     @Id
@@ -21,9 +19,9 @@ public class Term {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "name")
-    private TermName name = TermName.NONE;
+    private TermName name;
 
-    @OneToMany(mappedBy = "term")
+    @OneToMany(mappedBy = "term", cascade = CascadeType.REMOVE)
     private List<MemberTerm> memberTerms = new ArrayList<>();
 }
+
