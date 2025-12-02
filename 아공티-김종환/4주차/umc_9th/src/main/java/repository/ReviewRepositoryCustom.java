@@ -1,4 +1,3 @@
-// src/main/java/repository/ReviewRepositoryCustom.java
 package repository;
 
 import entity.Review;
