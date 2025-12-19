@@ -4,8 +4,9 @@ import com.example.umc9th.domain.member.entity.mapping.MemberFood;
 import com.example.umc9th.domain.member.entity.mapping.MemberTerm;
 import com.example.umc9th.domain.mission.entity.MemberMission;
 import com.example.umc9th.domain.review.entity.Review;
-import com.example.umc9th.global.entity.BaseEntity;
+import com.example.umc9th.global.auth.entity.BaseEntity;
 
+import com.example.umc9th.global.auth.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -57,7 +58,14 @@ public class Member extends BaseEntity {
     @Builder.Default
     private int point = 0;
 
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @Column(name = "phone_number")
     private String phoneNumber;

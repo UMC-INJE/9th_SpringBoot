@@ -5,7 +5,7 @@ import lombok.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import com.example.umc9th.global.entity.BaseEntity;
+import com.example.umc9th.global.auth.entity.BaseEntity;
 import com.example.umc9th.domain.store.entity.Store;
 
 @Entity
