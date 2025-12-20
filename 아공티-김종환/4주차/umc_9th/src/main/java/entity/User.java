@@ -60,4 +60,6 @@ public class User {
 
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
+    @Column(name = "password", nullable = false, length = 255)
+    private String password;
 }
