@@ -15,3 +15,4 @@ public enum FoodName {
     DESSERT,
     ASIAN_FOOD
 }
+

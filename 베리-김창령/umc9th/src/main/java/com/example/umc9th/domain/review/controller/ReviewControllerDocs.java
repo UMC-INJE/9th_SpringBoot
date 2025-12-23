@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface ReviewControllerDocs {
 
     @Operation(
-            summary = "가게의 리뷰 목록 조회 API (개발 중)",
+            summary = "가게의 리뷰 목록 조회 API",
             description = "특정 가게의 리뷰를 페이지네이션으로 조회합니다."
     )
     @ApiResponses({
@@ -25,7 +25,7 @@ public interface ReviewControllerDocs {
 
 
     @Operation(
-            summary = "리뷰 검색 API (개발 중)",
+            summary = "리뷰 검색 API",
             description = "query(검색어) & type(location/star/both) 로 리뷰를 검색하여 페이지네이션합니다."
     )
     @ApiResponses({
